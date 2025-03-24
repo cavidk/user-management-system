@@ -32,12 +32,12 @@ Bu layihə Laravel 11 və Filament v3 istifadə edilərək hazırlanmış tam fu
 
 ```bash
 
-git clone <your-repository-url>
+git clone <repository-url>
 cd user-management-system
 composer install
 cp .env.example .env
 php artisan key:generate
-php artisan migrate --seed
+php artisan migrate
 php artisan serve
 ```
 ---
@@ -45,7 +45,9 @@ php artisan serve
 ###  Create a Filament admin user:
 ```bash
 
-php artisan make:filament-user
+- php artisan filament:install
+- php artisan filament:install --panels
+- php artisan make:filament-user
 ```
 
 - 📍<b> Then visit: 
