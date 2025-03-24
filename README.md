@@ -98,6 +98,7 @@ Admin panel features:
 
 ### 📝 Notes
    ` 🚀 Future enhancements:`
+- 🐳 `Dockerize the application`
 - 📤 `Email notifications`
 - 📄 `PDF or Excel export (e.g., user reports)`
 - 📊 `Dashboard widgets & statistics`
