@@ -2,22 +2,37 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\User;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\DeleteAction;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Table;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationIcon = 'heroicon-o-users';
     protected static ?string $navigationGroup = 'İstifadəçi İdarəetməsi';
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
 
     public static function form(Form $form): Form
     {
@@ -58,8 +73,8 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->visible(fn () => auth()->user()->hasRole('admin')),
+                DeleteAction::make()->visible(fn () => auth()->user()->hasRole('admin')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
