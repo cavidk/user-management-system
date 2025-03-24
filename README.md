@@ -1,5 +1,5 @@
 ## 👥 İstifadəçi İdarəetmə Sistemi (User Management System)
-Bu layihə Laravel 11 və Filament v3 istifadə edilərək hazırlanmış tam funksional İstifadəçi İdarəetmə Sistemidir. Layihə backend developer bacarıqlarını yoxlamaq üçün texniki tapşırığa əsasən hazırlanıb.
+Bu layihə Laravel 11 və Filament v3 istifadə edilərək hazırlanmış tam funksional İstifadəçi İdarəetmə Sistemidir. Layihə texniki tapşırığa əsasən hazırlanıb.
 
 ---
 
