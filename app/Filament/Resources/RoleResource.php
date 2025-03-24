@@ -19,6 +19,21 @@ class RoleResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-shield-check';
     protected static ?string $navigationGroup = 'İstifadəçi İdarəetməsi';
 
+    public static function canCreate(): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()?->hasRole('admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -38,11 +53,11 @@ class RoleResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
             ])
             ->actions([
-                EditAction::make(),
-                DeleteAction::make(),
+                EditAction::make()->visible(fn () => auth()->user()->hasRole('admin')),
+                DeleteAction::make()->visible(fn () => auth()->user()->hasRole('admin')),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()->visible(fn () => auth()->user()->hasRole('admin')),
             ]);
     }
 
