@@ -101,6 +101,7 @@ Admin panel features:
 - 📊 `Dashboard widgets & statistics`
 - 🧪 `Feature & Unit testing with PHPUnit`
 
+---
 ## 👤 Author
 
 - 🏻`Cavid Kazimzada`
